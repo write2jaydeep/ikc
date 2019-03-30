@@ -121,9 +121,12 @@ app_license = "MIT"
 # }
 
 scheduler_events = {
-    "cron": {
-        "0/1 * * * *": [
-            "ikc.data.get_sensor_data"
-        ]
-    }
+	"cron": {
+		"0/1 * * * *": [
+			"ikc.data.get_sensor_data"
+		]
+	},
 }
+	# "all": [
+	# 	"ikc.data.get_sensor_data"
+	# ]
