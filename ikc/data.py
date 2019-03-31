@@ -94,14 +94,14 @@ def get_address_value(address, client):
 	decoder = BinaryPayloadDecoder.fromRegisters(result.registers, byteorder=Endian.Little, wordorder=Endian.Little)
 	return decoder.decode_32bit_float()
 
-def set_address_value(address, client):
+def set_address_value(address, value, client):
 	"""
 	Sets value to address
 	:param address : address number in integer
 	:param client : client object
 	"""
 	builder = BinaryPayloadBuilder(byteorder=Endian.Little,wordorder=Endian.Little)
-	builder.add_32bit_float(1.0)
+	builder.add_32bit_float(value)
 	payload = builder.build()
 	result = client.write_registers(address=address, values=payload, skip_encode=True, unit=1)
 
