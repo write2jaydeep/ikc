@@ -5,7 +5,7 @@ frappe.ui.form.on('Main Control', {
 	onload: function(frm){
 		frappe.realtime.on("periodic_data_results", function(data){
 			for(var key in data){
-				console.log(key, data[key]);
+				// console.log(key, data[key]);
 				frm.set_value(key, data[key]);
 				frm.refresh_fields();
 			}
@@ -46,6 +46,11 @@ frappe.ui.form.on('Main Control', {
 		frm.call({
 			method: event,
 			doc: frm.doc,
+			callback: function(r){
+				if(!r.exc){
+					return
+				}
+			}
 		});
 	}
 });
